@@ -68,6 +68,7 @@ public final class MainActivity extends AppCompatActivity {
         //progressBar.setVisibility(View.INVISIBLE);
 
         configureNextButton();
+        configurePlaylistGeneratorSongButton();
     }
 
     private void configureNextButton() {
@@ -76,6 +77,16 @@ public final class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, PlaylistGenerator.class));
+            }
+        });
+    }
+
+    private void configurePlaylistGeneratorSongButton() {
+        Button nextButton = (Button) findViewById(R.id.playlistGeneratorSongButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PlaylistGeneratorSong.class));
             }
         });
     }
