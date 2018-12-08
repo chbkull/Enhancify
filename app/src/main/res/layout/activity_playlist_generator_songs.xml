@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="127dp"
+        android:layout_height="43dp"
+        android:text="Insert Songs:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="255dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="127dp"
+        android:layout_height="43dp"
+        android:text="Playlist Length:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="384dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="315dp"
+        android:layout_height="113dp"
+        android:text="Enter songs and artists to generate a playlist with similar content."
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="127dp"
+        android:layout_height="43dp"
+        android:text="Insert Artists:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="129dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="169dp"
+        android:layout_height="51dp"
+        android:text="Generate Playlist"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="169dp"
+        android:layout_height="51dp"
+        android:text="Back"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="205dp"
+        android:layout_height="111dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="129dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="205dp"
+        android:layout_height="111dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="255dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="136dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="200dp"
+        tools:layout_editor_absoluteY="384dp" />
+</android.support.constraint.ConstraintLayout>
