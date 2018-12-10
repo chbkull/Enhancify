@@ -1,5 +1,6 @@
 package com.fall2018finalproject.cs125.enhancify;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +21,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PlaylistGenerator extends AppCompatActivity {
@@ -128,11 +131,26 @@ public class PlaylistGenerator extends AppCompatActivity {
                         public void onResponse(final JSONObject response) {
                             Log.d(TAG, response.toString());
                             try {
-                                JSONArray trackArray = response.getJSONArray("tracks");
-                                for (int trackIndex = 0; trackIndex < trackArray.length(); trackIndex++) {
-                                    //Log.d("");
+                                ArrayList<String> trackList = new ArrayList<>();
+                                JSONArray tracks = response.getJSONArray("tracks");
+                                for (int trackIndex = 0; trackIndex < tracks.length(); trackIndex++) {
+                                    JSONObject currentTrack = tracks.getJSONObject(trackIndex);
+                                    String information = currentTrack.getString("id") + "|";
+                                    information += tracks.getJSONObject(trackIndex).getString("name") + "|";
+                                    JSONArray artists = currentTrack.getJSONArray("artists");
+                                    for (int artistIndex = 0; artistIndex < artists.length(); artistIndex++) {
+                                        JSONObject currentArtist = artists.getJSONObject(artistIndex);
+                                        information += currentArtist.getString("name") + ", ";
+                                    }
+                                    //trim final comma and space
+                                    information = information.substring(0, information.length() - 2);
+                                    Log.d(TAG, information);
+                                    trackList.add(information);
                                 }
-                                //Log.d(TAG, "tracks: " + tracks);
+
+                                Intent launchResult = new Intent(PlaylistGenerator.this, PlaylistOutput.class);
+                                launchResult.putStringArrayListExtra("tracks", trackList);
+                                startActivity(launchResult);
                             } catch (JSONException e) {
                                 Log.d(TAG, "something failed");
                             }
