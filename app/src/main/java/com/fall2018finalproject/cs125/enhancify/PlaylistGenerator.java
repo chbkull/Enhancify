@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -37,6 +39,22 @@ public class PlaylistGenerator extends AppCompatActivity {
     /** Request queue for our network requests. */
     private static RequestQueue requestQueue;
 
+    private static String[] validGenres = new String[]{"acoustic", "afrobeat", "alt-rock", "alternative",
+    "ambient", "anime", "black-metal", "bluegrass", "blues", "bossanova", "brazil", "breakbeat", "british",
+    "cantopop", "chicago-house", "children", "chill", "classical", "club", "comedy", "country", "dance",
+    "dancehall", "death-metal", "deep-house", "detroit-techno", "disco", "disney", "drum-and-bass",
+    "dub", "dubstep", "edm", "electro", "electronic", "emo", "folk", "forro", "french", "funk", "garage",
+    "german", "gospel", "goth", "grindcore", "groove", "grunge", "guitar", "happy", "hard-rock", "hardcore",
+    "hardstyle", "heavy-metal", "hip-hop", "holidays", "honky-tonk", "house", "idm", "indian", "indie",
+    "indie-pop", "industrial", "iranian", "j-dance", "j-idol", "j-pop", "j-rock", "jazz", "k-pop",
+    "kids", "latin", "latino", "malay", "mandopop", "metal", "metal-misc", "metalcore", "minimal-techno",
+    "movies", "mpb", "new-age", "new-release", "opera", "pagode", "party", "philippines-opm", "piano",
+    "pop", "pop-film", "post-dubstep", "power-pop", "progressive-house", "psych-rock", "punk", "punk-rock",
+    "r-n-b", "rainy-day", "reggae", "reggaeton", "road-trip", "rock", "rock-n-roll", "rockabilly", "romance",
+    "sad", "salsa", "samba", "sertanejo", "show-tunes", "singer-songwriter", "ska", "sleep", "songwriter",
+    "soul", "soundtracks", "spanish", "study", "summer", "swedish", "synth-pop", "tango", "techno", "trance",
+    "trip-hop", "turkish", "work-out", "world-music"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +64,10 @@ public class PlaylistGenerator extends AppCompatActivity {
         setContentView(R.layout.activity_playlist_generator);
 
         configureBackButton();
+
+        Spinner dropdown = findViewById(R.id.genreList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, validGenres);
+        dropdown.setAdapter(adapter);
 
         final Button generatePlaylist = findViewById(R.id.generatePlaylist);
         generatePlaylist.setOnClickListener(new View.OnClickListener() {
@@ -181,8 +203,8 @@ public class PlaylistGenerator extends AppCompatActivity {
 
     private String queryBuilder() {
         String complete = "?limit=10&market=US&seed_genres=";
-        EditText genreInput = findViewById(R.id.genreInput);
-        complete = complete + genreInput.getText().toString() + "&";
+        Spinner genreInput = findViewById(R.id.genreList);
+        complete = complete + genreInput.getSelectedItem().toString() + "&";
         complete = complete + "target_tempo" + Integer.toString((((SeekBar) findViewById(R.id.tempoBar)).getProgress()) + 30) + "&";
         complete = complete + "target_valence" + Double.toString((double) (((SeekBar) findViewById(R.id.valanceBar)).getProgress()) / 100.0) + "&";
         complete = complete + "target_popularity" + Integer.toString(((SeekBar) findViewById(R.id.popularityBar)).getProgress()) + "&";
