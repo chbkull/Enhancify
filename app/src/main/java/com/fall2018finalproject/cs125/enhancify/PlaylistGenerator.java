@@ -64,6 +64,7 @@ public class PlaylistGenerator extends AppCompatActivity {
         setContentView(R.layout.activity_playlist_generator);
 
         configureBackButton();
+        configureRandomButton();
 
         Spinner dropdown = findViewById(R.id.genreList);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, validGenres);
@@ -74,8 +75,6 @@ public class PlaylistGenerator extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "generatePlaylist button hit.");
-
-                //dummy();
                 tokenAPICall();
             }
         });
@@ -87,6 +86,16 @@ public class PlaylistGenerator extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+    }
+
+    private void configureRandomButton() {
+        Button randomButton = (Button) findViewById(R.id.randomButton);
+        randomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                randomize();
             }
         });
     }
@@ -212,5 +221,15 @@ public class PlaylistGenerator extends AppCompatActivity {
         complete = complete + "target_energy" + Double.toString((double) (((SeekBar) findViewById(R.id.energyBar)).getProgress()) / 100.0);
 
         return complete;
+    }
+
+    private void randomize() {
+        Log.d(TAG, "LENGTH: " + Integer.toString(validGenres.length));
+        ((Spinner) findViewById(R.id.genreList)).setSelection((int) (Math.random() * validGenres.length));
+        ((SeekBar) findViewById(R.id.tempoBar)).setProgress((int) (Math.random() * 151));
+        ((SeekBar) findViewById(R.id.valanceBar)).setProgress((int) (Math.random() * 101));
+        ((SeekBar) findViewById(R.id.popularityBar)).setProgress((int) (Math.random() * 101));
+        ((SeekBar) findViewById(R.id.danceabilityBar)).setProgress((int) (Math.random() * 101));
+        ((SeekBar) findViewById(R.id.energyBar)).setProgress((int) (Math.random() * 101));
     }
 }
