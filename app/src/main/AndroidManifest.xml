@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlaylistGenerator" />
-        <activity android:name=".PlaylistGeneratorSongs"></activity>
+        <activity android:name=".PlaylistGeneratorSong" />
+        <activity android:name=".PlaylistOutput"></activity>
     </application>
 
 </manifest>
