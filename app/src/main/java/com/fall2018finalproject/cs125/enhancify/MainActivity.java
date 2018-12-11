@@ -68,7 +68,7 @@ public final class MainActivity extends AppCompatActivity {
         //progressBar.setVisibility(View.INVISIBLE);
 
         configureNextButton();
-        configureKyleButton();
+        configurePlaylistGeneratorSongButton();
     }
 
     private void configureNextButton() {
@@ -81,18 +81,15 @@ public final class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    //set up button that sends the user to song to playlist generator
-    private void configureKyleButton() {
-        Button nextButton = (Button) findViewById(R.id.kyleButton);
+    private void configurePlaylistGeneratorSongButton() {
+        Button nextButton = (Button) findViewById(R.id.playlistGeneratorSongButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PlaylistGeneratorSongs.class));
+                startActivity(new Intent(MainActivity.this, PlaylistGeneratorSong.class));
             }
         });
     }
-
 
     /**
      * Make an API call.
