@@ -295,7 +295,7 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
             if (input.charAt(i) == ' ') {
                 output += "%20";
             } else if (input.charAt(i) == ','){
-                output += "%2C%20";
+                output += "%2C";
             } else {
                 output += input.charAt(i);
             }
