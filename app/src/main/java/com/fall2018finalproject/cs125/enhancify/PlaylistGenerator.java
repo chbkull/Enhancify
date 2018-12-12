@@ -74,7 +74,6 @@ public class PlaylistGenerator extends AppCompatActivity {
         generatePlaylist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                Log.d(TAG, "generatePlaylist button hit.");
                 tokenAPICall();
             }
         });
@@ -112,35 +111,27 @@ public class PlaylistGenerator extends AppCompatActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
-                            Log.d(TAG, response.toString());
-                            TextView output = findViewById(R.id.jsonResult);
                             try {
                                 String accessKey = response.getString("access_token");
                                 spotifyAPICall(accessKey);
                             } catch (JSONException e) {
-                                Log.d(TAG, "oops");
                             }
                             //output.setText(response.toString());
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(final VolleyError error) {
-                    Log.w(TAG, error.toString());
                 }
             }) {
                 @Override
                 public Map<String, String> getHeaders() {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("Authorization", "Basic " + COMBINED_KEY);
-                    Log.d(TAG, params.toString());
                     return params;
                 }
             };
-            Log.d(TAG, "JsonObjectRequest:");
-            Log.d(TAG, jsonObjectRequest.toString());
             requestQueue.add(jsonObjectRequest);
         } catch (Exception e) {
-            Log.d(TAG, "Authorization failed");
             e.printStackTrace();
         }
 
@@ -151,7 +142,6 @@ public class PlaylistGenerator extends AppCompatActivity {
      * @param authorizationKey Key in order to use spotify's servers.
      */
     void spotifyAPICall(final String authorizationKey) {
-        Log.d(TAG, queryBuilder());
         try {
             CustomRequest jsonObjectRequest = new CustomRequest(
                     Request.Method.GET,
@@ -160,7 +150,6 @@ public class PlaylistGenerator extends AppCompatActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
-                            Log.d(TAG, response.toString());
                             try {
                                 ArrayList<String> trackList = new ArrayList<>();
                                 JSONArray tracks = response.getJSONArray("tracks");

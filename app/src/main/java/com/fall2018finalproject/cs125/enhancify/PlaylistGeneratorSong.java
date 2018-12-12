@@ -90,7 +90,6 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
                         @Override
                         public void onResponse(final JSONObject response) {
                             Log.d(TAG, response.toString());
-                            TextView output = findViewById(R.id.jsonResult);
                             try {
                                 String accessKey = response.getString("access_token");
                                 accessToken = accessKey;
