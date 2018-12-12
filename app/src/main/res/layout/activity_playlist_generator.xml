@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#606060"
     tools:context=".PlaylistGenerator">
 
     <SeekBar
@@ -81,7 +82,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:background="@color/colorAccent"
         android:text="Generate"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="Slow"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/tempoBar"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="Fast"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/tempoBar"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,6 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:text="Negative"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/valanceBar"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -120,6 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Positive"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/valanceBar"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -128,7 +135,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="New"
+        android:text="Unknown"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/popularityBar"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -138,6 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:text="Popular"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/popularityBar"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -147,6 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:text="Sitting"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/danceabilityBar"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -156,6 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:text="Dancing"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/danceabilityBar"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -165,6 +176,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:text="Tired"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/energyBar"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -174,6 +186,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Energetic"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/energyBar"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -182,7 +195,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:background="@color/colorPrimary"
         android:text="Back"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
@@ -210,6 +225,7 @@
         android:layout_marginEnd="31dp"
         android:layout_marginRight="31dp"
         android:text="Genre:"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/genreList"
         app:layout_constraintStart_toStartOf="parent"
@@ -224,7 +240,9 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
+        android:background="@color/colorPrimary"
         android:text="Random"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/generatePlaylist"
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toBottomOf="@+id/energyBar" />

@@ -62,9 +62,6 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
                 tokenAPICall();
             }
         });
-        //print thing to textbox
-        TextView output = findViewById(R.id.inputString);
-        output.setText(queryBuilder());
     }
 
     private void configureBackButton(){
@@ -93,7 +90,7 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
                             try {
                                 String accessKey = response.getString("access_token");
                                 accessToken = accessKey;
-                                spotifyAPICall(accessKey);
+                                queryBuilder(accessKey);
                             } catch (JSONException e) {
                                 Log.d(TAG, "oops");
                             }
@@ -127,12 +124,12 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
      * Actual call to Spotify's servers.
      * @param authorizationKey Key in order to use spotify's servers.
      */
-    void spotifyAPICall(final String authorizationKey) {
+    void spotifyAPICall(final String authorizationKey, String query) {
         //Log.d(TAG, queryBuilder());
         try {
             CustomRequest jsonObjectRequest = new CustomRequest(
                     Request.Method.GET,
-                    "https://api.spotify.com/v1/recommendations" + queryBuilder(),
+                    "https://api.spotify.com/v1/recommendations" + query,
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -187,13 +184,7 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
         }
     }
 
-    private String queryBuilder() {
-        /*
-         "https://api.spotify.com/v1/recommendations?limit=10
-         &market=US&seed_artists=AAAAAAAAAAAAAAA%20AAAAAAAA%2C%20BBBBBBBBBBBBBBB%2C%20ccccccccccc%20ccccccccc
-         &seed_tracks=SONG%20LIST
-         &min_popularity=50" -H "Accept: application/json" -H "Content-Type: application/json" -H"Authorization: Bearer INSERT TOKEN THING HERE"
-         */
+    private void queryBuilder(String authorizationKey) {
         EditText listLimit = findViewById(R.id.listLength);
         String limit = listLimit.getText().toString();
         String complete = "?limit=" + limit + "&market=US&seed_artists=";
@@ -208,7 +199,7 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
             complete = complete + currentId;
         }
         complete = complete + "&seed_tracks=";
-        Log.d(TAG, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + complete);
+        Log.d(TAG, "Complete:" + complete);
         //do seed tracks
         EditText trackInput = findViewById(R.id.songList);
 
@@ -218,11 +209,8 @@ public class PlaylistGeneratorSong extends AppCompatActivity {
             songChangeAPICall(accessToken, "track", changeCommas(temp));
             complete = complete + currentId;
         }
-        //add end stuff with token
-        //complete = complete + "&min_popularity=50\" -H \"Accept: application/json\" -H \"Content-Type: application/json\" -H\"Authorization: ";
-        //complete = complete + COMBINED_KEY;
         Log.d(TAG, "Complete query builder: " + complete);
-        return complete;
+        spotifyAPICall(authorizationKey, complete);
     }
     
     
